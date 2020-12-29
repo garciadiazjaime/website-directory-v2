@@ -7,17 +7,16 @@
 
 		const { title } = categories.find(item => item.slug === params.slug)
 
-		return { places, title };
+		return { places, title: `${title} en Playas de Tijuana` };
 	}
 </script>
 
 <script>
+	import LazyImage from '../../components/LazyImage.svelte';
+
 	export let places
 	export let title
 </script>
-
-<style>
-</style>
 
 <svelte:head>
 	<title>{title}</title>
@@ -26,9 +25,14 @@
 <h1>{title}</h1>
 
 <div>
-	<ul>
+
 	{#each places as place}
-		<li><a href={`https://www.google.com/maps/search/?api=1&query=${place.gps.coordinates[1]},${place.gps.coordinates[0]}`} target="_blank" rel="nofollow noreferrer">{place.name}</a></li>
+		<div>
+			<LazyImage dataSrc={place.photoURL} alt={place.name} />
+
+			<div>
+				<a href={`https://www.google.com/maps/search/?api=1&query=${place.gps.coordinates[1]},${place.gps.coordinates[0]}`} target="_blank" rel="nofollow noreferrer">{place.name}</a>
+			</div>
+		</div>
 	{/each}
-	</ul>
 </div>

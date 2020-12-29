@@ -19,7 +19,7 @@
 </ul>
 
 <div>
-	<a href="https://www.feedmetj.com/">¿Qué comer en Tijuana?</a>
+	<a href="https://www.feedmetj.com/" title="Comida Tijuana">¿Que comer en Tijuana?</a>
 </div>
 
 
