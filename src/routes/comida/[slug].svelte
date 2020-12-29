@@ -2,7 +2,7 @@
 	import { categories } from '../../utils/categories'
 
 	export async function preload({ params }) {
-		const res = await this.fetch(`process.env.API_URL/places/${params.slug}`);
+		const res = await this.fetch(`process.env.API_URL/gmaps-place/${params.slug}`);
 		const places = await res.json();
 
 		const { title } = categories.find(item => item.slug === params.slug)
