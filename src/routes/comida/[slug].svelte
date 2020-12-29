@@ -18,6 +18,32 @@
 	export let title
 </script>
 
+<style>
+	h1 {
+		text-align: center;
+	}
+
+	.place {
+		border: 1px solid #DDD;
+		margin: 24px auto;
+		width: 400px;
+		font-size: 1.2em;
+	}
+
+	.content {
+		padding: 0 20px;
+	}
+
+	p {
+		margin: 6px 0;
+		word-wrap: break-word;
+	}
+
+	a {
+		text-decoration: none;
+	}
+</style>
+
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
@@ -27,11 +53,27 @@
 <div>
 
 	{#each places as place}
-		<div>
+		<div class="place">
 			<LazyImage dataSrc={place.photoURL} alt={place.name} />
 
-			<div>
-				<a href={`https://www.google.com/maps/search/?api=1&query=${place.gps.coordinates[1]},${place.gps.coordinates[0]}`} target="_blank" rel="nofollow noreferrer">{place.name}</a>
+			<div class="content">
+				<h2>{place.name}</h2>
+
+				{#if place.phone}
+				<p>
+					<a href="tel:{place.phone}" ref="nofollow noreferrer">{place.phone}</a>
+				</p>
+				{/if}
+				{#if place.website}
+				<p>
+					<a href={place.website} ref="nofollow noreferrer" target="_blank">{place.website}</a>
+				</p>
+				{/if}
+				{#if place.address}
+				<p>
+					<a href="https://www.google.com/maps/search/?api=1&query={place.gps.coordinates[1]},{place.gps.coordinates[0]}" ref="nofollow noreferrer" target="_blank">{place.address}</a>
+				</p>
+				{/if}
 			</div>
 		</div>
 	{/each}
