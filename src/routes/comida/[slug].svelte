@@ -1,80 +1,49 @@
-<script context="module">
-	import { categories } from '../../utils/categories'
+<script>
+	export let places
+  export let categories
+  export let slug
 
-	export async function preload({ params }) {
-		const res = await this.fetch(`process.env.API_URL/gmaps-place/${params.slug}`);
-		const places = await res.json();
-
-		const { title } = categories.find(item => item.slug === params.slug)
-
-		return { places, title: `${title} en Playas de Tijuana` };
-	}
+	import Grid from '../../components/Grid.svelte'
 </script>
 
-<script>
-	import LazyImage from '../../components/LazyImage.svelte';
+<script context="module">
+	import { getDataFor } from '../../support/data'
 
-	export let places
-	export let title
+	export async function preload({ params }) {
+    const { slug } = params
+		const {
+			places,
+			categories,
+		} = await getDataFor.call(this, slug)
+
+		return {
+			places,
+      categories,
+      slug
+		}
+	}
 </script>
 
 <style>
+	.container {
+		color: #313d69;
+		font-size: 20px;
+		padding: 15px 15px 0;
+		margin: 0 10px;
+	}
+
 	h1 {
-		text-align: center;
-	}
-
-	.place {
-		border: 1px solid #DDD;
-		margin: 24px auto;
-		width: 400px;
-		font-size: 1.2em;
-	}
-
-	.content {
-		padding: 0 20px;
-	}
-
-	p {
-		margin: 6px 0;
-		word-wrap: break-word;
-	}
-
-	a {
-		text-decoration: none;
+		margin-bottom: 20px;
+		color: #313d69;
 	}
 </style>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{categories[slug].fullTitle}</title>
 </svelte:head>
 
-<h1>{title}</h1>
+<div class="container">
+  <h1>{categories[slug].fullTitle}</h1>
 
-<div>
-
-	{#each places as place}
-		<div class="place">
-			<LazyImage dataSrc={place.photoURL} alt={place.name} />
-
-			<div class="content">
-				<h2>{place.name}</h2>
-
-				{#if place.phone}
-				<p>
-					<a href="tel:{place.phone}" ref="nofollow noreferrer">{place.phone}</a>
-				</p>
-				{/if}
-				{#if place.website}
-				<p>
-					<a href={place.website} ref="nofollow noreferrer" target="_blank">{place.website}</a>
-				</p>
-				{/if}
-				{#if place.address}
-				<p>
-					<a href="https://www.google.com/maps/search/?api=1&query={place.gps.coordinates[1]},{place.gps.coordinates[0]}" ref="nofollow noreferrer" target="_blank">{place.address}</a>
-				</p>
-				{/if}
-			</div>
-		</div>
-	{/each}
+  <Grid places={places} categories={categories} />
 </div>

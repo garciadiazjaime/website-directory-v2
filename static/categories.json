@@ -1,0 +1,14 @@
+{
+  "cafe": {
+    "title": "Cafes",
+    "fullTitle": "Los mejores Cafes de Playas de Tijuana"
+  }, 
+  "restaurant": {
+    "title": "Restaurantes",
+    "fullTitle": "Los mejores Restaurantes de Playas de Tijuana"
+  },
+  "bar": {
+    "title": "Bares",
+    "fullTitle": "Los mejores Bares de Playas de Tijuana"
+  }
+}
