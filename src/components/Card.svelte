@@ -46,7 +46,7 @@
     cursor: pointer;
   }
 
-  h2 {
+  h3 {
     margin: 0;
     padding: 0 6px 12px;
   }
@@ -60,9 +60,9 @@
 </style>
 
 <div class="card" on:click={clickHandler} data-id={id}>
-  <h2>{name}</h2>
+  <h3>{name}</h3>
 
-  <img src={imgUrl} alt={name} use:lazyLoad />
+  <img src={imgUrl} alt={`Restaurante en Playas de Tijuana: ${name}`} use:lazyLoad />
 
   <p>{address || ''}</p>
 </div>
