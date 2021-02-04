@@ -1,14 +1,14 @@
 {
   "cafe": {
     "title": "Cafes",
-    "fullTitle": "Los mejores Cafes de Playas de Tijuana"
+    "fullTitle": "Lugares para tomar un buen Cafe en Playas"
   }, 
   "restaurant": {
     "title": "Restaurantes",
-    "fullTitle": "Los mejores Restaurantes de Playas de Tijuana"
+    "fullTitle": "Los mejores restaurantes de Tijuana están Playas"
   },
   "bar": {
     "title": "Bares",
-    "fullTitle": "Los mejores Bares de Playas de Tijuana"
+    "fullTitle": "Bares de Playas de Tijuana"
   }
 }

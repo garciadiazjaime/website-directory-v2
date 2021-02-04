@@ -47,7 +47,7 @@
 
 <div class="container">
 	{#each places as item}
-		<h2><a href="/comida/{item.slug}" title={categories[item.slug].fullTitle}>{categories[item.slug].title}</a></h2>
+		<h2><a href="/comida/{item.slug}" title={categories[item.slug].fullTitle}>{categories[item.slug].fullTitle}</a></h2>
 
 		<div class="grid-container">
 			{#each item.data as place}
@@ -58,6 +58,8 @@
 					name={place.name} 
 					photoURL={place.photoURL} 
 					address={place.address}
+					category={item.slug}
+					gps={place.gps.coordinates}
 				/>
 			{/each}
 		</div>

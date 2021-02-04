@@ -36,12 +36,12 @@
 </style>
 
 <svelte:head>
-	<title>Comida en Playas de Tijuana | Restaurantes, Cafes  y Bares</title>
+	<title>Los mejores Restaurantes, Cafes y Bares de Playas de Tijuana | Descubre la comida de playami.</title>
 	<meta name="description" content="Que comer en Playas de Tijuana. Restaurantes, Cafes y Bares. Descubre la mejor comida y disfruta la gastronomia de playami.">
 </svelte:head>
 
 <div class="container">
-	<h1>Restaurantes y la mejor Comida en Playas de Tijuana</h1>
+	<h1>Restaurantes, Cafes y Bares en Playas de Tijuana</h1>
 
 	<Grid places={places} categories={categories} />
 </div>

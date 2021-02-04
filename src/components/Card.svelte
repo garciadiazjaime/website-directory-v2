@@ -5,6 +5,8 @@
 	export let name;
 	export let photoURL;
   export let address;
+  export let category;
+  export let gps;
 
   let imgUrl = ''
 
@@ -29,10 +31,6 @@
       }
     }
   }
-
-  function clickHandler() {
-    window.open(website || url);
-  }
 </script>
 
 <style>
@@ -40,10 +38,6 @@
     padding: 6px 0;
     box-shadow: 2px 2px 6px 6px #c8c8c8;
     width: 100%;
-  }
-
-  .card:hover {
-    cursor: pointer;
   }
 
   h3 {
@@ -57,12 +51,16 @@
     width: 100%;
     object-fit: cover;
   }
+
+  a {
+    text-decoration: none;
+  }
 </style>
 
-<div class="card" on:click={clickHandler} data-id={id}>
-  <h3>{name}</h3>
+<div class="card" data-id={id}>
+  <h3><a href={website || url} title={`${category} en Playas de Tijuana: ${name}`} target="_blank" rel="nofollow noreferrer">{name}</a></h3>
 
-  <img src={imgUrl} alt={`Restaurante en Playas de Tijuana: ${name}`} use:lazyLoad />
+  <img src={imgUrl} alt={`${category} en Playas de Tijuana: ${name}`} use:lazyLoad />
 
-  <p>{address || ''}</p>
+  <a href={`https://www.google.com/maps/place/${gps[1]},${gps[0]}`} title={`${category} en Playas de Tijuana: ${name}`} target="_blank" rel="nofollow noreferrer">{address}</a>
 </div>
