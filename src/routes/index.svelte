@@ -3,6 +3,9 @@
 	export let categories
 
 	import Grid from '../components/Grid.svelte'
+
+	const title = 'Restaurantes Cafes Bares Playas Tijuana Disfruta su Comida'
+	const description = 'Que comer en Playas de Tijuana? Descubre los mejores Restaurantes, Cafes y Bares. La mejor comida de Tijuana se cocina en Playas de Tijuana.'
 </script>
 
 <script context="module">
@@ -36,8 +39,13 @@
 </style>
 
 <svelte:head>
-	<title>Los mejores Restaurantes, Cafes y Bares de Playas de Tijuana | Descubre la comida de playami.</title>
-	<meta name="description" content="Que comer en Playas de Tijuana. Restaurantes, Cafes y Bares. Descubre la mejor comida y disfruta la gastronomia de playami.">
+	<title>{title}</title>
+	<meta property="og:title" content={title}>
+	<meta property="og:description" content={description}>
+	<meta property="og:image" content="https://www.playami.com/banner.png">
+	<meta property="og:url" content="https://www.playami.com/">
+	<meta name="description" content={description}>
+	<link href="https://www.google-analytics.com" rel="dns-prefetch">
 </svelte:head>
 
 <div class="container">
@@ -46,8 +54,19 @@
 	<Grid places={places} categories={categories} />
 </div>
 
-<div>
-	<a href="https://www.feedmetj.com/" title="Que comer en Tijuana">¿Que comer en Tijuana?</a>
-</div>
+<p>
+	Playas de Tijuana, conocido como Playami, además de contar con opciones de comida se cuenta con la playa, la cual siempre es buena para una caminata, especialmente durante el atardecer. Si buscas de un ambiente relajado y precios razonables, Playas es la opción.
+</p>
 
+<footer>
+	<p>{description}</p>
 
+	Proyecto en Colaboración con: <br />
+	<a href="https://www.garitacenter.com/">Reporte de Garitas | Linea Tijuana / San Ysidro - Otay</a>
+	<br />
+	<a href="https://www.feedmetj.com/">¿Qué comer en Tijuana?</a>
+	<br />
+	<a href="https://www.noticiasmexico.org/">Las Últimas noticias de México</a>
+	<br />
+	<a href="https://www.mintitmedia.com/">Desarrollo Web en Tijuana</a>
+</footer>
