@@ -4,9 +4,8 @@
   export let url;
 	export let name;
 	export let photoURL;
-  export let address;
   export let category;
-  export let gps;
+  export let comments;
 
   let imgUrl = ''
 
@@ -62,5 +61,11 @@
 
   <img src={imgUrl} alt={`${category} en Playas de Tijuana: ${name}`} use:lazyLoad />
 
-  <a href={`https://www.google.com/maps/place/${gps[1]},${gps[0]}`} title={`${category} en Playas de Tijuana: ${name}`} target="_blank" rel="nofollow noreferrer">{address}</a>
+  <ul>
+    {#each comments.slice(0, 3) as comment}
+    <li>
+      {comment.text}
+    </li>
+    {/each}
+  </ul>
 </div>

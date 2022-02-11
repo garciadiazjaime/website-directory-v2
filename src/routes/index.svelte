@@ -2,10 +2,10 @@
 	export let places
 	export let categories
 
-	import Grid from '../components/Grid.svelte'
+	import Card from '../components/Card.svelte'
 
-	const title = 'Restaurantes Cafes Bares Playas Tijuana Disfruta su Comida'
-	const description = 'Que comer en Playas de Tijuana? Descubre los mejores Restaurantes, Cafes y Bares. La mejor comida de Tijuana se cocina en Playas de Tijuana.'
+	const title = 'Restaurantes Cafés Bares Playas Tijuana Disfruta su Comida'
+	const description = 'Qué comer en Playas de Tijuana? Descubre los mejores Restaurantes, Cafés y Bares. La mejor comida de Tijuana se cocina en Playas de Tijuana.'
 </script>
 
 <script context="module">
@@ -28,13 +28,45 @@
 	.container {
 		color: #313d69;
 		font-size: 20px;
-		padding: 15px 15px 0;
-		margin: 0 10px;
 	}
 
 	h1 {
-		margin-bottom: 20px;
+		padding: 20px 0;
 		color: #313d69;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.grid-container {
+		display: grid;
+		grid-column-gap: 20px;
+		grid-row-gap: 12px;
+		grid-template-columns: repeat( auto-fit, minmax(100%, 1fr) );
+		margin-bottom: 120px;
+	}
+
+	h2 {
+		margin: 20px 0;
+	}
+
+	@media (min-width: 600px) {
+		.grid-container {
+			grid-template-columns: repeat( auto-fit, minmax(48%, 1fr) );
+		}
+	}
+
+	@media (min-width: 900px) {
+		.grid-container {
+			grid-template-columns: repeat( auto-fit, minmax(30%, 1fr) );
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.grid-container {
+			grid-template-columns: repeat( auto-fit, minmax(23%, 1fr) );
+		}
 	}
 </style>
 
@@ -49,9 +81,27 @@
 </svelte:head>
 
 <div class="container">
-	<h1>Restaurantes, Cafes y Bares en Playas de Tijuana</h1>
+	<h1>Restaurantes, Cafés y Bares en Playas de Tijuana</h1>
 
-	<Grid places={places} categories={categories} />
+	<div class="container">
+		{#each places as item}
+			<h2><a href="/comida/{item.slug}" title={categories[item.slug].fullTitle}>{categories[item.slug].fullTitle}</a></h2>
+	
+			<div class="grid-container">
+				{#each item.data as place}
+					<Card 
+						id={place.id} 
+						website={place.website} 
+						url={place.url} 
+						name={place.name} 
+						photoURL={place.photoURL} 
+						category={item.slug}
+						comments={place.reviews}
+					/>
+				{/each}
+			</div>
+		{/each}
+	</div>
 </div>
 
 <p>
@@ -69,4 +119,8 @@
 	<a href="https://www.noticiasmexico.org/">Las Últimas noticias de México</a>
 	<br />
 	<a href="https://www.mintitmedia.com/">Desarrollo Web en Tijuana</a>
+	<br />
+	<a href="https://www.comprarcasatijuana.com/">Comprar casa en Tijuana</a>
+	<br />
+	<a href="http://www.larutadelvinoensenada.com/">La Ruta del Vino Ensenada</a>
 </footer>
