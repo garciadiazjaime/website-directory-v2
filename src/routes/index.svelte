@@ -31,8 +31,9 @@
 	}
 
 	h1 {
-		padding: 20px 0;
-		color: #313d69;
+		padding: 170px 0;
+		background-color: #313d69;
+		color: white;
 	}
 
 	a {
