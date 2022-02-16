@@ -6,13 +6,10 @@
     "dev": "sapper dev",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
-    "start": "node __sapper__/build",
-    "data": "node etl/data.js"
+    "start": "node __sapper__/build"
   },
   "dependencies": {
     "compression": "^1.7.1",
-    "convict": "^6.0.0",
-    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.0"
   },
