@@ -25,9 +25,12 @@ export default {
 		output: config.client.output(),
 		plugins: [
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode),
-				'process.env.API_URL': API_URL
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.API_URL': API_URL
+				},
 			}),
 			svelte({
 				compilerOptions: {
@@ -76,9 +79,12 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode),
-				'process.env.API_URL': API_URL
+				preventAssignment: true,
+				values:{
+					'process.browser': false,
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.API_URL': API_URL
+				},
 			}),
 			svelte({
 				compilerOptions: {
@@ -99,7 +105,6 @@ export default {
 			commonjs()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
@@ -110,14 +115,16 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode),
-				'process.env.API_URL': API_URL
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.API_URL': API_URL
+				},
 			}),
 			commonjs(),
 			!dev && terser()
 		],
-
 		preserveEntrySignatures: false,
 		onwarn,
 	}
