@@ -89,7 +89,9 @@
 
 	{#each sections as [category, title]}
 		<section>
-			<h2 class="container"><a href="/comida/{category}">{title}</a></h2>
+			<h2 class="container">
+				<a href={`comida/${category}`}>{title}</a>
+			</h2>
 			<ul>
 				{#each placesByCategory[category] as place, index}
 				<li>
