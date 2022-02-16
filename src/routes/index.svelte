@@ -29,9 +29,10 @@
 
 <style>
 	.cover {
-		padding: 170px 0px;
+		padding: 170px 12px;
 		background-color: #313d69;
 		color: white;
+		margin-bottom: 40px;
 	}
 
 	ul {
@@ -83,7 +84,7 @@
 
 <div class="content">
 	<div class="cover">
-		<h1 class="container">Restaurantes, Cafés y Bares en Playas de Tijuana</h1>
+		<h1>Restaurantes, Cafés y Bares en Playas de Tijuana</h1>
 	</div>
 
 	{#each sections as [category, title]}
