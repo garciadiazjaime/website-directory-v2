@@ -20,7 +20,7 @@
 
 ### El Valle de Guadalupe
 
-[La Ruta del Vino Ensenada](http://www.larutadelvinoensenada.com/)
+[La Ruta del Vino Ensenada](https://www.larutadelvinoensenada.com/)
 
 ### Mint IT Media
 
