@@ -121,22 +121,4 @@
 	Playas de Tijuana, conocido como Playami, además de contar con opciones de comida se cuenta con la playa, la cual siempre es buena para una caminata, especialmente durante el atardecer. Si buscas de un ambiente relajado y precios razonables, Playas es la opción.
 </p>
 
-<footer class="container">
-	<p>{sections[category].description}</p>
-
-	<div>
-		Proyecto en Colaboración con: 
-		<br />
-		- <a href="https://www.garitacenter.com/">Reporte de Garitas</a>
-		<br />
-		- <a href="https://www.feedmetj.com/">Restaurantes en Tijuana</a>
-		<br />
-		- <a href="https://www.noticiasmexico.org/">Las Últimas noticias de México</a>
-		<br />
-		- <a href="https://www.comprarcasatijuana.com/">Comprar Casa en Tijuana</a>
-		<br />
-		- <a href="https://www.larutadelvinoensenada.com/">La Ruta del Vino Ensenada</a>
-		<br />
-		- <a href="https://www.mintitmedia.com/">Desarrollo Web en Tijuana</a>
-	</div>
-</footer>
+<p class="container">{sections[category].description}</p>	
