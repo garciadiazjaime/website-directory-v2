@@ -14,12 +14,7 @@
 <script context="module">
 	export async function preload() {
 		const result = await this.fetch('process.env.API_URL/gmaps-place')
-		const data = await result.json()
-		const placesByCategory = data.reduce((accu, item) => {
-			accu[item.slug] = item.data
-
-			return accu
-		}, {})
+		const placesByCategory = await result.json()
 
 		return {
 			placesByCategory
@@ -94,7 +89,7 @@
 			</h2>
 			<ul>
 				{#each placesByCategory[category] as place, index}
-				<li>
+				<li data-id={place.id}>
 					<h3 class="container">
 						{index + 1} -
 						<a href={place.website || place.url}

@@ -21,13 +21,13 @@
 
 <script context="module">
 	export async function preload(page) {
-		const { slug } = page.params;
-		const result = await this.fetch(`process.env.API_URL/gmaps-place/${slug}`)
+		const { category } = page.params;
+		const result = await this.fetch(`process.env.API_URL/gmaps-place/${category}`)
 		const places = await result.json()
 
 		return {
-			places: Array.isArray(places) && places.length ? places[0] : {},
-			category: slug
+			places,
+			category
 		}
 	}
 </script>
@@ -90,7 +90,7 @@
 
 	<section>
 		<ul>
-			{#each places.data as place, index}
+			{#each places as place, index}
 			<li>
 				<h2 class="container">
 					{index + 1} -
