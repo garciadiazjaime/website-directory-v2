@@ -5,15 +5,13 @@
 </script>
 
 <style>
-	main {
+	main, footer {
 		position: relative;
-		background-color: #f8f8f8;
 		margin: 0 auto;
 		box-sizing: border-box;
 		height: auto;
-	}
-	footer {
-		padding: 0 12px;
+		max-width: 960px;
+		margin: 0 auto;
 	}
 </style>
 
@@ -24,6 +22,12 @@
 </main>
 
 <footer>
+	<div>
+		Síguenos en:
+		<ul>
+			<li><a href="https://www.instagram.com/playamitijuana/" title="Restaurantes en Playas de Tijuana">Instagram</a></li>
+		</ul>
+	</div>
 	Proyecto en Colaboración con: 
 	<ul>
 		<li><a href="https://www.garitacenter.com/">Reporte de Garitas</a></li>

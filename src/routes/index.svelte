@@ -2,13 +2,18 @@
 	import Lazy from 'svelte-lazy';
 	export let placesByCategory
 
-	const title = 'Restaurantes Cafés Bares Playas Tijuana Disfruta su Comida'
+	const title = 'Restaurantes, Cafés y Bares en Playas Tijuana'
 	const description = 'Qué comer en Playas de Tijuana? Descubre los mejores Restaurantes, Cafés y Bares. La mejor comida de Tijuana se cocina en Playas de Tijuana.'
 	const sections = [
 		['restaurant', 'Restaurantes en Playas de Tijuana'],
 		['cafe', 'Cafés en Playas de Tijuana'],
 		['bar', 'Bares en Playas de Tijuana']
 	]
+	const labels = {
+		restaurant: 'Restaurante',
+		cafe: 'Café',
+		bar: 'Bar'
+	}
 </script>
 
 <script context="module">
@@ -28,6 +33,7 @@
 		background-color: #313d69;
 		color: white;
 		margin-bottom: 40px;
+		text-align: center;
 	}
 
 	ul {
@@ -38,11 +44,6 @@
     list-style-type: none;
 		margin-bottom: 20px;
   }
-
-	.content {
-		max-width: 960px;
-		margin: 0 auto;
-	}
 
 	.container {
 		padding: 0 12px;
@@ -64,6 +65,9 @@
 
 	h3 {
 		font-size: 2em;
+	}
+	h3 small {
+		font-size: 0.5em;
 	}
 </style>
 
@@ -91,10 +95,11 @@
 				{#each placesByCategory[category] as place, index}
 				<li data-id={place.id}>
 					<h3 class="container">
-						{index + 1} -
+						{index + 1}.
 						<a href={place.website || place.url}
 							rel="nofollow noreferrer"
 							target="_blank">{place.name}</a>
+							<small>{labels[category]}</small>
 					</h3>
 					<Lazy height={300}>
 						<img src={place.photoURL} alt={place.name}>

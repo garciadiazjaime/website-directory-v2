@@ -1,5 +1,14 @@
 <script>
 	export let segment;
+	import { publish, subscribe } from "../support/events"
+
+	subscribe('update_menu', (path) => {
+		segment = path
+	})
+
+	function clickHandler() {
+		publish('update_menu', this.attributes.href.value.split('/').pop())
+	}
 </script>
 
 <style>
@@ -51,5 +60,8 @@
 <nav>
 	<ul>
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Comida</a></li>
+		<li><a aria-current="{segment === "restaurant" ? 'page' : undefined}" href="comida/restaurant" on:click={clickHandler}>Restaurantes</a></li>
+		<li><a aria-current="{segment === "cafe" ? 'page' : undefined}" href="comida/cafe" on:click={clickHandler}>Cafés</a></li>
+		<li><a aria-current="{segment === "bar" ? 'page' : undefined}" href="comida/bar" on:click={clickHandler}>Bares</a></li>
 	</ul>
 </nav>

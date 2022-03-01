@@ -1,7 +1,11 @@
 <script>
 	import Lazy from 'svelte-lazy';
+	import { publish } from "../../support/events"
+
 	export let places
 	export let category
+
+	publish('update_menu', category)
 
 	const sections = {
 		restaurant: {
@@ -16,6 +20,12 @@
 			title: 'Bares en Playas de Tijuana',
 			description: 'Qué bares hay en Playas de Tijuana? Los mejores bares de Tijuana están en Playas de Tijuana.'
 		},
+	}
+
+	const labels = {
+		restaurant: 'Restaurante',
+		cafe: 'Café',
+		bar: 'Bar'
 	}
 </script>
 
@@ -38,6 +48,7 @@
 		background-color: #313d69;
 		color: white;
 		margin-bottom: 40px;
+		text-align: center;
 	}
 
 	ul {
@@ -71,6 +82,9 @@
 	h2 {
 		font-size: 2em;
 	}
+	h2 small {
+		font-size: 0.5em;
+	}
 </style>
 
 <svelte:head>
@@ -93,19 +107,22 @@
 			{#each places as place, index}
 			<li>
 				<h2 class="container">
-					{index + 1} -
+					{index + 1}.
 					<a href={place.website || place.url}
 						rel="nofollow noreferrer"
 						target="_blank">{place.name}</a>
+						<small>{labels[category]}</small>
 				</h2>
 				<Lazy height={300}>
 					<img src={place.photoURL} alt={place.name}>
 				</Lazy>
 				<div class="container">
 					{#each place.reviews.slice(0, 3) as review}
+						{#if review.text.length}
 						<p>
 							- {review.text}
 						</p>
+						{/if}
 					{/each}
 					<small>{place.address}</small>
 				</div>
